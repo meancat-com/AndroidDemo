@@ -22,21 +22,25 @@ public class TouchManager : MonoBehaviour
 
     private void OnEnable()
     {
-        plantAction.performed += CreatePlant;
+        plantAction.performed += OnTouch;
     }
 
     private void OnDisable()
     {
-        plantAction.performed -= CreatePlant;
+        plantAction.performed -= OnTouch;
     }
 
-    private void CreatePlant(InputAction.CallbackContext context)
+    private void OnTouch(InputAction.CallbackContext context)
     {
         Debug.Log("Create a plant!");
-        var tapPos = context.ReadValue<Vector2>();
-        Debug.Log($"clicked at {tapPos}");
+        CreatePlant(context.ReadValue<Vector2>());
+    }
+    
+    private void CreatePlant(Vector2 uiPosition)
+    {
+        Debug.Log("Create a plant!");
         GameObject obj = Instantiate(smallObjectPrefab, canvas);
-        var worldPoint = Camera.main.ScreenToWorldPoint(tapPos);
+        var worldPoint = Camera.main.ScreenToWorldPoint(uiPosition);
         worldPoint.z = Camera.main.nearClipPlane;
         obj.transform.position = worldPoint;
     }
