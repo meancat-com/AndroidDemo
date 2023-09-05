@@ -17,13 +17,6 @@ public class ButtonActionsScript : MonoBehaviour
     private void Awake()
     {
         Debug.Log("Awake!");
-        //EnhancedTouchSupport.Enable();
-        //TouchSimulation.Enable();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
     }
 
     // Update is called once per frame
@@ -123,7 +116,7 @@ public class ButtonActionsScript : MonoBehaviour
         SetText($"Number is {i}");
     }
 
-    public void SetText(string s)
+    private void SetText(string s)
     {
         if (wackyText != null)
         {
