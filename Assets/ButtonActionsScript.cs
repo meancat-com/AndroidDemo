@@ -36,14 +36,7 @@ public class ButtonActionsScript : MonoBehaviour, IPointerClickHandler
         i++;
         SetText($"Number is NOW {i}");
     } 
-    
-    public void OnClick()
-    {
-        Debug.Log("button clicked");
-        i++;
-        SetText($"Number is {i}");
-    }
-
+   
     private void SetText(string s)
     {
         if (wackyText != null)
